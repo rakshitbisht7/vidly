@@ -29,22 +29,4 @@ router.post("/", async (req, res) => {
     .header("x-auth-token", token)
     .send(_.pick(user, ["_id", "name", "email"]));
 });
-
-// router.put("/:id", async (req, res) => {
-//   const { error } = validateUser(req.body);
-//   if (error) return res.status(400).send(error.details[0].message);
-
-//   const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-//     new: true,
-//   });
-//   if (!user) return res.status(404).send("User not found");
-//   res.send(user);
-// });
-
-// router.delete("/:id", async (req, res) => {
-//   const user = await User.findByIdAndRemove(req.params.id);
-//   if (!user) return res.status(404).send("User not found");
-//   res.send(user);
-// });
-
 module.exports = router;
