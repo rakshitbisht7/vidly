@@ -7,8 +7,14 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const genres = await Genre.find().sort("name");
-  res.send(genres);
+  try {
+    const genres = await Genre.find().sort("name");
+    console.log("Fetched genres:", genres); // Debugging line
+    res.send(genres);
+  } catch (error) {
+    console.error("Error fetching genres:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.post("/", auth, async (req, res) => {
