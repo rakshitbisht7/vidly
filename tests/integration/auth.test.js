@@ -4,13 +4,13 @@ const mongoose = require("mongoose");
 const { Genre } = require("../../models/genre");
 
 describe("auth middleware", () => {
-  beforeAll(() => {
+  beforeEach(() => {
     server = require("../../index");
   });
-  afterAll(async () => {
+  afterEach(async () => {
     await Genre.deleteMany({});
     await server.close();
-    await mongoose.connection.close();
+    // await mongoose.connection.close();
   });
 
   let token;
